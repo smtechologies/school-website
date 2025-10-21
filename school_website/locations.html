@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Locations | School Website</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- AOS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --primary: #0b5a8a;
+      --accent: #f4b400;
+      --light: #f9fbff;
+      --dark: #111;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Open Sans",sans-serif;
+      color:var(--dark);
+      background:#fff;
+      font-size:1.02rem;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    h1,h2,h3,h4,h5{font-family:"Poppins",sans-serif;}
+
+    /* Topbar */
+    .topbar{background:var(--primary);color:#fff;padding:10px 0}
+    .topbar .inner{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:0 16px;gap:12px}
+    .topbar .btn{border-radius:24px;font-weight:600}
+    .topbar .search input{border-radius:24px;border:none;padding:8px 14px;width:300px}
+
+    /* Navbar */
+    header.mainnav{background:#fff;box-shadow:0 3px 10px rgba(0,0,0,0.05)}
+    header.mainnav .inner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:10px 16px}
+    .brand a{color:var(--primary);font-weight:800;font-size:1.2rem;text-decoration:none}
+    .links a{color:var(--primary);margin:0 8px;font-weight:600;text-decoration:none}
+    .links a.active,.links a:hover{color:var(--accent)}
+
+    /* Hero */
+    .hero{position:relative;background:url('images/school-campus-banner.jpg') center/cover no-repeat;height:70vh;display:flex;align-items:center;justify-content:center;color:#fff;text-align:center}
+    .hero::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,0.45)}
+    .hero .content{position:relative;z-index:2;max-width:900px}
+    .hero h1{font-size:3rem;font-weight:800;margin-bottom:8px}
+    .hero p{font-size:1.2rem;color:#f1f7ff}
+
+    /* Map (color highlighted static) */
+    .india-map-section{padding:48px 16px;text-align:center;background:transparent}
+    .india-map-inner{max-width:1100px;margin:auto}
+    .india-map img{width:100%;height:auto;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.08);display:block}
+
+    /* Search areas */
+    .search-block{padding:36px 16px;background:var(--light)}
+    .search-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:center}
+    .search-card{background:#fff;padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+    .search-card label{font-weight:600;color:var(--primary);display:block;margin-bottom:8px}
+    .search-card .form-control{border-radius:10px;border:1px solid #dce6f2;padding:10px}
+
+    /* small screens */
+    @media (max-width:991px){
+      .search-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:600px){
+      .search-grid{grid-template-columns:1fr}
+      .hero{height:56vh}
+      .hero h1{font-size:1.9rem}
+    }
+
+    /* Locations cards */
+    .locations{padding:60px 16px}
+    .section-title{text-align:center;color:var(--primary);font-weight:800;margin-bottom:28px;font-size:2rem}
+    .location-card{background:#fff;border-radius:12px;padding:22px;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,0.06);transition:all .25s}
+    .location-card h5{color:var(--primary);font-weight:700;margin-bottom:8px}
+    .location-card p{color:#444;margin-bottom:12px}
+    .btn-map{background:var(--accent);color:#111;border:none;border-radius:8px;padding:8px 12px;font-weight:600}
+
+    /* Map embed */
+    .map-section{padding:48px 16px;background:var(--light)}
+    .map-wrap{max-width:1100px;margin:auto;text-align:center}
+    .map-wrap iframe{width:100%;height:420px;border-radius:12px;border:0;box-shadow:0 8px 24px rgba(0,0,0,0.08)}
+
+    /* Quick links */
+    .quick-links{padding:48px 16px}
+    .quick-card{background:#fff;border-radius:12px;padding:20px;text-align:center;box-shadow:0 6px 16px rgba(0,0,0,0.06)}
+    .quick-card i{font-size:1.8rem;color:var(--accent);margin-bottom:10px}
+    .quick-card h5{margin:8px 0 6px;color:var(--primary);font-weight:700}
+
+    /* FAQ (bigger text) */
+    .faq-section{padding:48px 16px}
+    .accordion .accordion-button{font-size:1.12rem;font-weight:700;color:var(--primary)}
+    .accordion .accordion-body{font-size:1.02rem;color:#333}
+
+    /* Contact Us (same as home) */
+    .contact-section{padding:48px 16px;background:#fff}
+    .contact-info{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+    @media (max-width:900px){ .contact-info{grid-template-columns:1fr} }
+
+    /* Footer */
+    footer{background:var(--primary);color:#fff;padding:36px 16px;text-align:center;margin-top:28px}
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="inner">
+      <button class="btn btn-light">📄 Download Brochure</button>
+      <div class="search"><input placeholder="Search..." /></div>
+      <button class="btn btn-warning">📩 Enquire Now</button>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="mainnav">
+    <div class="inner">
+      <div class="brand"><a href="index.html">School Website</a></div>
+      <nav class="links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="initiatives.html">Initiatives</a>
+        <a href="admissions.html">Admissions</a>
+        <a href="locations.html" class="active">Locations</a>
+        <a href="careers.html">Careers</a>
+        <a href="alumni.html">Alumni</a>
+        <a href="blogs.html">Blogs</a>
+        <a href="news.html">News</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero (unchanged) -->
+  <section class="hero" data-aos="fade-up">
+    <div class="content">
+      <h1>Our School Locations</h1>
+      <p>Find your nearest branch across India</p>
+    </div>
+  </section>
+
+  <!-- Color-highlighted Static India Map (below hero) -->
+  <section class="india-map-section" data-aos="fade-up">
+    <div class="india-map-inner">
+      <!--
+        Place a color-highlighted static map image in images/india-map-highlighted.png
+        The image should visually shade/highlight your active states (Maharashtra, Gujarat, Karnataka, Goa, Delhi NCR, Telangana/Hyderabad, etc.)
+        If you prefer SVG I can embed an SVG instead — for now this uses a static image.
+      -->
+      <img src="images/india-map-highlighted.png" alt="India map showing states with our schools (highlighted)">
+      <p style="margin-top:12px;color:#444">States highlighted: Maharashtra, Gujarat, Karnataka, Goa, Delhi NCR, Telangana (Hyderabad), Maharashtra (Pune, Nagpur), etc.</p>
+    </div>
+  </section>
+
+  <!-- Search Sections: by State+City, by Pincode, Select by State Name -->
+  <section class="search-block" data-aos="fade-up">
+    <div class="search-grid">
+      <!-- State + City -->
+      <div class="search-card">
+        <label for="searchState">Search by State</label>
+        <select id="searchState" class="form-control">
+          <option value="">Select state</option>
+          <option>Maharashtra</option>
+          <option>Gujarat</option>
+          <option>Karnataka</option>
+          <option>Goa</option>
+          <option>Delhi NCR</option>
+          <option>Telangana</option>
+        </select>
+
+        <label for="searchCity" style="margin-top:12px">Search by City</label>
+        <input id="searchCity" type="text" class="form-control" placeholder="Enter city (e.g. Mumbai)">
+        <div style="margin-top:12px;text-align:right">
+          <button class="btn btn-map" onclick="searchByStateCity()">Search</button>
+        </div>
+      </div>
+
+      <!-- By Pincode -->
+      <div class="search-card">
+        <label for="searchPincode">Search by Pincode</label>
+        <input id="searchPincode" type="text" class="form-control" placeholder="Enter pincode (e.g. 400001)">
+        <small style="color:#666">Find branches serving a pincode area</small>
+        <div style="margin-top:12px;text-align:right">
+          <button class="btn btn-map" onclick="searchByPincode()">Search</button>
+        </div>
+      </div>
+
+      <!-- Select by State Name -->
+      <div class="search-card">
+        <label for="selectStateName">Select State Name</label>
+        <select id="selectStateName" class="form-control">
+          <option value="">-- Choose state --</option>
+          <option>Maharashtra</option>
+          <option>Gujarat</option>
+          <option>Karnataka</option>
+          <option>Goa</option>
+          <option>Delhi NCR</option>
+          <option>Telangana</option>
+        </select>
+        <div style="margin-top:12px;text-align:right">
+          <button class="btn btn-map" onclick="filterByState()">Filter</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Existing Locations Grid (kept unchanged but enhanced with View on Map buttons) -->
+  <section class="locations" data-aos="fade-up">
+    <h2 class="section-title">Our Presence Across India</h2>
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="zoom-in">
+          <div class="location-card">
+            <h5>Maharashtra</h5>
+            <p>Mumbai, Pune, Nagpur, Nashik, Kolhapur</p>
+            <button class="btn-map" onclick="scrollToMap('Maharashtra')">View on Map</button>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="zoom-in">
+          <div class="location-card">
+            <h5>Gujarat</h5>
+            <p>Ahmedabad, Vadodara, Surat, Rajkot</p>
+            <button class="btn-map" onclick="scrollToMap('Gujarat')">View on Map</button>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="zoom-in">
+          <div class="location-card">
+            <h5>Karnataka</h5>
+            <p>Bangalore, Mysore, Hubballi</p>
+            <button class="btn-map" onclick="scrollToMap('Karnataka')">View on Map</button>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="zoom-in">
+          <div class="location-card">
+            <h5>Delhi NCR</h5>
+            <p>New Delhi, Noida, Gurgaon</p>
+            <button class="btn-map" onclick="scrollToMap('Delhi NCR')">View on Map</button>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="zoom-in">
+          <div class="location-card">
+            <h5>Goa</h5>
+            <p>Panjim, Margao</p>
+            <button class="btn-map" onclick="scrollToMap('Goa')">View on Map</button>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="zoom-in">
+          <div class="location-card">
+            <h5>Telangana</h5>
+            <p>Hyderabad, Secunderabad</p>
+            <button class="btn-map" onclick="scrollToMap('Telangana')">View on Map</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Map embed (unchanged, user asked to keep) -->
+  <section class="map-section" id="map-section" data-aos="fade-up">
+    <div class="map-wrap">
+      <h2 class="section-title">Locate Us on Map</h2>
+      <!-- Google Maps embed centered on India; click View on Map scrolls here -->
+      <iframe id="mainMap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12059893.309759354!2d67.06478397390468!3d20.59368388259096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30635ff87b6a7933%3A0xdeb2f9d1ff3e2ed7!2sIndia!5e0!3m2!1sen!2sin!4v1675677890321!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <!-- Quick Links (same as Home) -->
+  <section class="quick-links" data-aos="fade-up">
+    <div class="container">
+      <h2 class="section-title">Quick Links</h2>
+      <div class="row g-4">
+        <div class="col-md-3"><div class="quick-card"><i>📘</i><h5>Admissions</h5><p>Join our learning community</p></div></div>
+        <div class="col-md-3"><div class="quick-card"><i>📍</i><h5>Locations</h5><p>Find nearby branches</p></div></div>
+        <div class="col-md-3"><div class="quick-card"><i>💬</i><h5>Enquiry</h5><p>Ask your questions</p></div></div>
+        <div class="col-md-3"><div class="quick-card"><i>🎓</i><h5>Careers</h5><p>Be part of our team</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ (bigger text) -->
+  <section class="faq-section" data-aos="fade-up">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="accordion" id="locationsFaq">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqA1">
+              How can I find the nearest branch?
+            </button>
+          </h2>
+          <div id="faqA1" class="accordion-collapse collapse show" data-bs-parent="#locationsFaq">
+            <div class="accordion-body">Use the search fields above (state/city/pincode) or browse the location cards. Click "View on Map" to see branches on the map.</div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqA2">
+              Are all branches open for admissions?
+            </button>
+          </h2>
+          <div id="faqA2" class="accordion-collapse collapse" data-bs-parent="#locationsFaq">
+            <div class="accordion-body">Admissions depend on seat availability at each branch — contact the branch or use the enquiry form on the site.</div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqA3">
+              I couldn't find my city in the list. What next?
+            </button>
+          </h2>
+          <div id="faqA3" class="accordion-collapse collapse" data-bs-parent="#locationsFaq">
+            <div class="accordion-body">Please contact our support or use the Enquire button — we’ll help find the nearest campus or future openings.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Us (same as home) -->
+  <section class="contact-section" data-aos="fade-up">
+    <div class="contact-info">
+      <!-- Contact form -->
+      <div style="background:#fff;padding:24px;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,0.06);">
+        <h3 style="color:var(--primary);margin-bottom:12px">Contact Us</h3>
+        <form id="contactForm">
+          <div class="mb-3">
+            <label class="form-label">Your Name</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Phone</label>
+            <input type="tel" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Message</label>
+            <textarea class="form-control" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-warning">Send Message</button>
+        </form>
+      </div>
+
+      <!-- Contact details & map thumbnail -->
+      <div style="background:#fff;padding:24px;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,0.06);">
+        <h3 style="color:var(--primary);margin-bottom:12px">Head Office</h3>
+        <p><strong>Podar Education Complex</strong><br>Mumbai, Maharashtra<br>Phone: +91 9876543210<br>Email: info@podarschool.com</p>
+        <div style="margin-top:12px">
+          <iframe src="https://www.google.com/maps?q=Podar%20Education%20Mumbai&output=embed" style="width:100%;height:220px;border:0;border-radius:10px"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (unchanged) -->
+  <footer>
+    <p>© School Website — All Rights Reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 700, once: true });
+
+    // Small helpers for UI interactions (these are simple client-side helpers)
+    function scrollToMap(state){
+      // scroll to map section
+      const mapSection = document.getElementById('map-section');
+      if(!mapSection) return;
+      mapSection.scrollIntoView({behavior:'smooth',block:'start'});
+      // Optionally, you could change the map src to focus on a state - left as placeholder
+      // e.g. change iframe src param to focus on state (requires valid embed URL)
+      console.log('View on Map clicked for', state);
+    }
+
+    function searchByStateCity(){
+      const state = document.getElementById('searchState').value.trim();
+      const city = document.getElementById('searchCity').value.trim();
+      if(!state && !city){
+        alert('Please enter state or city to search.');
+        return;
+      }
+      // Minimal demo behavior: scroll to locations and highlight matches (server-side needed for full).
+      document.querySelector('.locations').scrollIntoView({behavior:'smooth'});
+      alert('Searching for: ' + (state?('State: '+state+' '):'') + (city?('City: '+city):''));
+    }
+
+    function searchByPincode(){
+      const pin = document.getElementById('searchPincode').value.trim();
+      if(!pin){
+        alert('Please enter a pincode.');
+        return;
+      }
+      document.querySelector('.locations').scrollIntoView({behavior:'smooth'});
+      alert('Searching by pincode: ' + pin);
+    }
+
+    function filterByState(){
+      const s = document.getElementById('selectStateName').value;
+      if(!s){ alert('Select a state from the dropdown.'); return; }
+      document.querySelector('.locations').scrollIntoView({behavior:'smooth'});
+      alert('Filtering locations for: ' + s);
+    }
+
+    // sample contact form submit handler (no server)
+    document.getElementById('contactForm')?.addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('Thanks! Your message has been received. Our team will contact you shortly.');
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>

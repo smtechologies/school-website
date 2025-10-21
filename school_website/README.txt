@@ -1,0 +1,1 @@
+School Website - internal CSS per page. Replace images in /images with real photos. Open index.html to view.

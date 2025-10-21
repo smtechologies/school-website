@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>School Website - Initiatives</title>
+    <style>
+      :root {
+        --blue: #0b5a8a;
+        --accent: #f4b400;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #111;
+        background: #fff;
+      }
+      .topbar {
+        background: var(--blue);
+        color: #fff;
+        padding: 10px 0;
+      }
+      .topbar .inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 0 16px;
+      }
+      .brochure,
+      .enquire {
+        background: #fff;
+        color: var(--blue);
+        border: none;
+        padding: 8px 14px;
+        border-radius: 24px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .enquire {
+        background: var(--accent);
+        color: #fff;
+      }
+      .search input {
+        padding: 8px 12px;
+        border-radius: 24px;
+        border: none;
+        width: 320px;
+        max-width: 60vw;
+      }
+      .mainnav {
+        background: #fff;
+        border-bottom: 1px solid #eef2f7;
+        box-shadow: 0 2px 6px rgba(3, 10, 18, 0.03);
+      }
+      .mainnav .inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 16px;
+      }
+      .brand a {
+        color: var(--blue);
+        font-weight: 800;
+        text-decoration: none;
+        font-size: 1.1rem;
+      }
+      .links a {
+        margin: 0 8px;
+        color: var(--blue);
+        text-decoration: none;
+        font-weight: 600;
+        padding: 8px 10px;
+        border-radius: 6px;
+      }
+      .links a:hover {
+        background: #f1f9ff;
+      }
+      .hero {
+        position: relative;
+        color: #fff;
+        text-align: center;
+        background-size: cover;
+        background-position: center;
+        padding: 140px 16px;
+      }
+      .hero .wrap {
+        max-width: 960px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
+      .hero:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.45);
+        z-index: 1;
+      }
+      .h1 {
+        font-size: 2.6rem;
+        margin: 0 0 12px;
+        font-weight: 800;
+        color: #fff;
+      }
+      .lead {
+        font-size: 1.05rem;
+        color: #f3f7fb;
+        margin: 0;
+      }
+      .section {
+        padding: 56px 16px;
+      }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .section-title {
+        text-align: center;
+        color: var(--blue);
+        font-weight: 800;
+        margin-bottom: 18px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid #eef2f7;
+        border-radius: 8px;
+        padding: 16px;
+        box-shadow: 0 2px 6px rgba(3, 10, 18, 0.03);
+        text-align: left;
+      }
+      .card img {
+        width: 100%;
+        border-radius: 6px;
+        display: block;
+      }
+      .stat-grid {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .stat {
+        background: #eef9ff;
+        padding: 18px;
+        border-radius: 8px;
+        min-width: 160px;
+        text-align: center;
+      }
+      .stat h3 {
+        margin: 0;
+        color: var(--blue);
+        font-size: 2rem;
+      }
+      .btn-primary {
+        background: var(--blue);
+        color: #fff;
+        padding: 10px 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      .footer {
+        background: var(--blue);
+        color: #fff;
+        padding: 30px 16px;
+        margin-top: 30px;
+        text-align: center;
+      }
+      .faq q {
+        display: block;
+        padding: 12px 0;
+        border-bottom: 1px solid #f1f5f9;
+        cursor: pointer;
+        color: var(--blue);
+        font-weight: 700;
+      }
+      .answer {
+        display: none;
+        padding: 8px 0;
+        color: #333;
+      }
+      @media (max-width: 700px) {
+        .hero {
+          padding: 90px 12px;
+        }
+        .h1 {
+          font-size: 1.6rem;
+        }
+        .search input {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="inner">
+        <button class="brochure">📄 Download Brochure</button>
+        <div class="search"><input placeholder="Search" /></div>
+        <button class="enquire">📩 Enquire Now</button>
+      </div>
+    </div>
+
+    <header class="mainnav">
+      <div class="inner">
+        <div class="brand"><a href="index.html">School Website</a></div>
+        <nav class="links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="initiatives.html">Initiatives</a>
+          <a href="admissions.html">Admissions</a>
+          <a href="locations.html">Locations</a>
+          <a href="careers.html">Careers</a>
+          <a href="alumni.html">Alumni</a>
+          <a href="blogs.html">Blogs</a>
+          <a href="news.html">News</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Initiatives</h2>
+        <p>Initiatives content placeholder.</p>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="container">
+        <p>
+          © School Website — GUI Demo. Replace placeholders with real content.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".faq q").forEach(function (q) {
+          q.addEventListener("click", function () {
+            var a = q.nextElementSibling;
+            a.style.display = a.style.display === "block" ? "none" : "block";
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

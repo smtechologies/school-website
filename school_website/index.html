@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>School Website - Home</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- AOS for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <style>
+      :root {
+        --teal: #00b4d8;
+        --yellow: #ffb703;
+        --orange: #fb8500;
+        --nav-dark: #023047;
+        --muted-bg: #f7fafc;
+        --card-radius: 14px;
+        --glass: rgba(255, 255, 255, 0.06);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Roboto", sans-serif;
+        color: #0b2545;
+        background: #fff;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        scroll-behavior: smooth;
+      }
+
+      a {
+        color: inherit;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      /* Topbar */
+      .topbar {
+        background: linear-gradient(90deg, #06d6a0, #118ab2);
+        color: #fff;
+        padding: 10px 0;
+        font-size: 0.95rem;
+      }
+      .topbar .container {
+        max-width: 1200px;
+      }
+      .topbar .inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 0 16px;
+      }
+      .topbar .btn {
+        border-radius: 24px;
+        padding: 8px 14px;
+        font-weight: 700;
+        border: 0;
+        cursor: pointer;
+      }
+      .topbar .brochure {
+        background: #fff;
+        color: var(--nav-dark);
+      }
+      .topbar .enquire {
+        background: var(--yellow);
+        color: #000;
+      }
+
+      .topbar .search input {
+        border-radius: 30px;
+        padding: 8px 14px;
+        border: 0;
+        width: 260px;
+        max-width: 60vw;
+      }
+
+      /* Navbar */
+      .navbar {
+        background: #fff;
+        box-shadow: 0 6px 24px rgba(12, 30, 63, 0.06);
+        position: sticky;
+        top: 0;
+        z-index: 1100;
+      }
+      .navbar .container {
+        max-width: 1200px;
+      }
+      .navbar-brand {
+        font-family: "Poppins", sans-serif;
+        color: var(--nav-dark);
+        font-weight: 800;
+      }
+      .navbar-nav .nav-link {
+        color: var(--nav-dark) !important;
+        font-weight: 600;
+        margin: 0 8px;
+        padding: 8px 10px;
+        border-radius: 8px;
+        transition: all 0.18s;
+      }
+      .navbar-nav .nav-link:hover {
+        color: #000 !important;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 183, 3, 0.08),
+          rgba(0, 180, 216, 0.04)
+        );
+      }
+
+      .dropdown-menu {
+        border: 0;
+        border-radius: 12px;
+        box-shadow: 0 12px 30px rgba(12, 30, 63, 0.09);
+      }
+      .dropdown-item {
+        font-weight: 600;
+        color: var(--nav-dark);
+      }
+      .dropdown-item:hover {
+        background: linear-gradient(90deg, #fff9ec, #f7fbff);
+        color: var(--yellow);
+      }
+
+      /* Hero - background image with animated gradient overlay (option 2) */
+      .hero {
+        position: relative;
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: url("images/students_hero_section.jpg") center/cover
+          no-repeat;
+        overflow: hidden;
+      }
+
+      /* animated gradient overlay */
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          120deg,
+          rgba(0, 180, 216, 0.55),
+          rgba(255, 183, 3, 0.45),
+          rgba(251, 133, 0, 0.35)
+        );
+        background-size: 300% 300%;
+        animation: moveGradient 14s linear infinite;
+        mix-blend-mode: multiply;
+        z-index: 1;
+        pointer-events: none;
+      }
+      @keyframes moveGradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .hero .hero-inner {
+        position: relative;
+        z-index: 2;
+        max-width: 980px;
+        padding: 40px;
+        border-radius: 18px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.04),
+          rgba(255, 255, 255, 0.02)
+        );
+        backdrop-filter: blur(4px);
+        box-shadow: 0 20px 60px rgba(2, 6, 23, 0.35);
+      }
+      .hero h1 {
+        font-family: "Poppins", sans-serif;
+        font-size: 3.6rem;
+        color: #fff;
+        margin: 0 0 12px;
+        line-height: 1.02;
+      }
+      .hero p {
+        color: rgba(255, 255, 255, 0.96);
+        font-size: 1.25rem;
+        margin-bottom: 18px;
+      }
+      .hero .btn-cta {
+        background: var(--yellow);
+        color: #000;
+        font-weight: 800;
+        border-radius: 36px;
+        padding: 12px 28px;
+        border: 0;
+      }
+      .hero .btn-cta.secondary {
+        background: transparent;
+        border: 2px solid rgba(255, 255, 255, 0.18);
+        color: #fff;
+        margin-left: 12px;
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2rem;
+          padding: 0 12px;
+        }
+        .hero p {
+          font-size: 1rem;
+        }
+        .topbar .search input {
+          display: none;
+        }
+      }
+
+      /* Sections and titles */
+      section {
+        padding: 76px 0;
+      }
+      .section-title {
+        font-family: "Poppins", sans-serif;
+        font-size: 2.4rem;
+        color: var(--nav-dark);
+        text-align: center;
+        margin-bottom: 12px;
+      }
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 90px;
+        height: 4px;
+        background: var(--yellow);
+        margin: 12px auto 0;
+        border-radius: 3px;
+      }
+
+      /* Cards */
+      .card {
+        border-radius: var(--card-radius);
+        overflow: hidden;
+        border: 0;
+        box-shadow: 0 10px 30px rgba(12, 30, 63, 0.06);
+        transition: transform 0.33s, box-shadow 0.33s;
+      }
+      .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 24px 60px rgba(12, 30, 63, 0.12);
+      }
+      .card img {
+        height: 230px;
+        object-fit: cover;
+      }
+      .card-body p {
+        color: #213547;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      /* Quick-cards */
+      .quick-card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(12, 30, 63, 0.04);
+      }
+      .quick-card h5 {
+        color: var(--nav-dark);
+        margin-top: 8px;
+        font-weight: 700;
+      }
+
+      /* Contact form */
+      .form-control {
+        border-radius: 10px;
+        border: 1px solid #e6eef8;
+        padding: 12px;
+      }
+      .btn-send {
+        background: var(--yellow);
+        border: 0;
+        color: #000;
+        border-radius: 36px;
+        padding: 10px 22px;
+        font-weight: 700;
+      }
+
+      /* Admissions CTA */
+      .admissions-cta {
+        max-width: 1200px;
+        margin: 36px auto;
+        padding: 22px;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 183, 3, 0.12),
+          rgba(0, 180, 216, 0.06)
+        );
+        border-radius: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+      }
+      .admissions-cta h3 {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        color: var(--nav-dark);
+      }
+      .admissions-cta p {
+        margin: 0;
+        color: #364e63;
+      }
+
+      /* Footer */
+      footer {
+        background: linear-gradient(90deg, #00b4d8, #118ab2);
+        color: #fff;
+        padding: 36px 18px;
+        text-align: center;
+      }
+
+      /* AOS tweaks */
+      [data-aos] {
+        transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      .feature-section {
+        padding: 100px 0;
+        color: #fff;
+      }
+      .feature-section h2 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+      .feature-section p {
+        font-size: 1.15rem;
+        line-height: 1.8;
+      }
+      .feature-section .btn-cta {
+        background: #fff;
+        color: #000;
+        font-weight: 700;
+        border-radius: 36px;
+        padding: 12px 30px;
+        border: 0;
+        transition: all 0.3s ease;
+      }
+      .feature-section .btn-cta:hover {
+        transform: translateY(-3px);
+        background: #fefefe;
+      }
+
+      /* === Theme Enhancements (Bright-Light Alternation) === */
+.themed-section {
+  padding: 80px 0;
+  transition: background 0.5s ease;
+}
+
+.themed-section .card {
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  border: none;
+  background: #fff;
+}
+
+.themed-section.text-white .card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(5px);
+}
+
+.quick-card {
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform 0.3s ease;
+}
+
+.quick-card:hover {
+  transform: translateY(-6px);
+}
+
+
+      
+    </style>
+  </head>
+  <body>
+    <!-- Topbar -->
+    <div class="topbar">
+      <div class="container">
+        <div class="inner">
+          <div>
+            <button class="btn brochure">📄 Download Brochure</button>
+          </div>
+          <div>
+            <input type="text" placeholder="Search..." />
+          </div>
+          <div>
+            <button class="btn enquire">📩 Enquire Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">School Website</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+          aria-controls="navMenu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span
+            class="navbar-toggler-icon"
+            style="
+              background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'%23023047\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E');
+              width: 28px;
+              height: 28px;
+              display: inline-block;
+            "
+          ></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+
+            <!-- About Podar Dropdown -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="aboutDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                About Podar
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                <li>
+                  <a class="dropdown-item" href="/about.html">About Us</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/chairman-message.html"
+                    >Chairman’s Message</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/podar-initiatives.html"
+                    >Podar Initiatives</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <!-- Why Podar Dropdown -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="whyDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Why Podar
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="whyDropdown">
+                <li>
+                  <a class="dropdown-item" href="/curriculum.html"
+                    >The Right Curriculum</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/environment.html"
+                    >The Right Environment</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/approach.html"
+                    >The Right Approach</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/admissions.html">Admissions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/locations.html">Locations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/careers.html">Careers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/alumni.html">Alumni</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/blogs.html">Blogs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" role="banner" aria-label="Hero">
+      <div class="hero-inner" data-aos="zoom-in" data-aos-duration="900">
+        <div class="text-center">
+          <h1>98 Years Of Nurturing Creative Thinkers</h1>
+          <p>
+            Educating thousands of students across India with a blend of
+            tradition and innovation.
+          </p>
+          <div style="margin-top: 16px">
+            <a class="btn btn-cta" href="/admissions.html">Apply Now</a>
+            <a class="btn btn-cta secondary" href="/about.html">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Enhanced Learning Section ===== -->
+    <section
+      class="feature-section"
+      style="background: linear-gradient(135deg, #00b4d8 0%, #90e0ef 100%)"
+      data-aos="fade-up"
+    >
+      <div class="container-xl">
+        <div class="row align-items-center gy-5">
+          <div class="col-md-6 text-white">
+            <h2 class="section-title text-white">Learning</h2>
+            <p class="lead">
+              At Podar, learning is not just about textbooks — it's about
+              curiosity, creativity, and confidence. Our classrooms transform
+              into spaces where questions lead to discovery and collaboration
+              drives innovation.
+            </p>
+            <a href="/learning.html" class="btn btn-cta mt-3">Read More</a>
+          </div>
+          <div class="col-md-6" data-aos="fade-left">
+            <img
+              src="images/learning_big.jpg"
+              alt="Learning at Podar"
+              class="img-fluid rounded-4 shadow-lg"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Enhanced Teachers Section ===== -->
+    <section
+      class="feature-section"
+      style="background: linear-gradient(135deg, #ffb703 0%, #f48c06 100%)"
+      data-aos="fade-up"
+    >
+      <div class="container-xl">
+        <div class="row align-items-center gy-5 flex-md-row-reverse">
+          <div class="col-md-6 text-white">
+            <h2 class="section-title text-white">Teachers</h2>
+            <p class="lead">
+              Our teachers are the heartbeat of our institution — guiding,
+              mentoring, and inspiring students every day. With ongoing training
+              and modern pedagogy, they bring learning to life with compassion
+              and clarity.
+            </p>
+            <a href="/teachers.html" class="btn btn-cta mt-3">Read More</a>
+          </div>
+          <div class="col-md-6" data-aos="fade-right">
+            <img
+              src="images/teachers_big.jpg"
+              alt="Teachers at Podar"
+              class="img-fluid rounded-4 shadow-lg"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Enhanced Innovation Section ===== -->
+    <section
+      class="feature-section"
+      style="background: linear-gradient(135deg, #023047 0%, #219ebc 100%)"
+      data-aos="fade-up"
+    >
+      <div class="container-xl">
+        <div class="row align-items-center gy-5">
+          <div class="col-md-6 text-white">
+            <h2 class="section-title text-white">Innovation</h2>
+            <p class="lead">
+              Innovation is at the core of our learning philosophy. From
+              robotics and coding to research and design challenges — we empower
+              students to dream, build, and lead the change they wish to see.
+            </p>
+            <a href="/innovation.html" class="btn btn-cta mt-3">Read More</a>
+          </div>
+          <div class="col-md-6" data-aos="fade-left">
+            <img
+              src="images/innovation_big.jpg"
+              alt="Innovation at Podar"
+              class="img-fluid rounded-4 shadow-lg"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+   <!-- ===== Community (Bright yellow-light theme like Our Latest News) ===== -->
+<section class="themed-section" style="background: linear-gradient(135deg, #fff8e1 0%, #ffffff 100%);" data-aos="fade-up">
+  <div class="container-xl">
+    <h2 class="section-title">Community</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card" data-aos="fade-up" data-aos-delay="80">
+          <img src="images/campus.jpg" alt="Community engagement" />
+          <div class="card-body">
+            <p>
+              <strong>Community engagement programs.</strong><br />
+              Our initiatives connect students with local communities through service projects,
+              awareness campaigns, and partnerships that build empathy and civic responsibility.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card" data-aos="fade-up" data-aos-delay="140">
+          <img src="images/student6.jpg" alt="Volunteer initiatives" />
+          <div class="card-body">
+            <p>
+              <strong>Volunteer and leadership initiatives.</strong><br />
+              Students lead and participate in volunteer drives, learning leadership,
+              organization, and the importance of giving back to society.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card" data-aos="fade-up" data-aos-delay="200">
+          <img src="images/student7.jpg" alt="Cultural events" />
+          <div class="card-body">
+            <p>
+              <strong>Events that connect hearts and cultures.</strong><br />
+              Cultural festivals and inter-school events celebrate diversity, foster inclusion,
+              and give students a platform to share talents and traditions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== Achievements & Awards (Light theme like Community) ===== -->
+<section class="themed-section" style="background: linear-gradient(135deg, #f2f8fa 0%, #ffffff 100%);" data-aos="fade-up">
+  <div class="container-xl">
+    <h2 class="section-title">Achievements & Awards</h2>
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="card shadow-sm" data-aos="fade-up" data-aos-delay="80">
+          <img src="images/award.jpg" alt="National awards" />
+          <div class="card-body">
+            <p>
+              <strong>National awards for academic excellence.</strong><br />
+              Honours and recognition reflect the rigor of our curriculum and the dedication of
+              students and faculty alike.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card shadow-sm" data-aos="fade-up" data-aos-delay="120">
+          <img src="images/campus.jpg" alt="Expanding network" />
+          <div class="card-body">
+            <p>
+              <strong>Expanding our network nationwide.</strong><br />
+              Growth across regions helps us reach more communities while maintaining high
+              standards of education and care.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card shadow-sm" data-aos="fade-up" data-aos-delay="160">
+          <img src="images/innovation.jpg" alt="Innovation labs" />
+          <div class="card-body">
+            <p>
+              <strong>Innovation labs across all schools.</strong><br />
+              Dedicated spaces for design, coding, and science give every child the tools to
+              experiment and innovate.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card shadow-sm" data-aos="fade-up" data-aos-delay="200">
+          <img src="images/research.jpg" alt="Research projects" />
+          <div class="card-body">
+            <p>
+              <strong>Student research projects recognized globally.</strong><br />
+              Student-led research entries showcase original thinking and rigorous methodology on
+              international platforms.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== Our Latest News (Bright yellow-light) ===== -->
+<section class="themed-section" style="background: linear-gradient(135deg, #fff8e1 0%, #ffffff 100%);" data-aos="fade-up">
+  <div class="container-xl">
+    <h2 class="section-title">Our Latest News</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card" data-aos="fade-right" data-aos-delay="80">
+          <img src="images/news1.jpg" alt="Science fair" />
+          <div class="card-body">
+            <p>
+              <strong>Student wins international science fair.</strong><br />
+              A proud moment as our student's project earned international recognition, highlighting
+              creativity and scientific rigor.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card" data-aos="fade-up" data-aos-delay="140">
+          <img src="images/news2.jpg" alt="Digital hub" />
+          <div class="card-body">
+            <p>
+              <strong>New digital learning hub launched.</strong><br />
+              The hub centralizes digital resources, enabling blended learning and improved
+              accessibility for students and teachers.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card" data-aos="fade-left" data-aos-delay="200">
+          <img src="images/news3.jpg" alt="Annual fest" />
+          <div class="card-body">
+            <p>
+              <strong>Annual fest celebrates student creativity.</strong><br />
+              A celebration of art, music, and innovation — students showcase projects, performances,
+              and creative exhibits.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Podar Initiatives (Soft blue-light theme) ===== -->
+<section class="themed-section" style="background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);" data-aos="fade-up">
+  <div class="container-xl">
+    <h2 class="section-title">Podar Initiatives</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card" data-aos="flip-left" data-aos-delay="80">
+          <img src="images/initiative1.jpg" alt="Green Campus Drive" />
+          <div class="card-body">
+            <p>
+              <strong>Green Campus Drive - promoting sustainability.</strong><br />
+              Initiatives like tree-planting, waste management, and student-led green clubs support
+              environmental stewardship at every campus.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card" data-aos="flip-up" data-aos-delay="140">
+          <img src="images/initiative2.jpg" alt="Digital platforms" />
+          <div class="card-body">
+            <p>
+              <strong>Digital Learning Platforms for innovation.</strong><br />
+              Integrated digital systems provide personalized learning paths, interactive resources,
+              and teacher dashboards for effective instruction.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card" data-aos="flip-right" data-aos-delay="200">
+          <img src="images/initiative3.jpg" alt="Community outreach" />
+          <div class="card-body">
+            <p>
+              <strong>Community Outreach Programs nationwide.</strong><br />
+              Partnerships and outreach projects strengthen ties with local communities and expand
+              our social impact.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Quick Links (Orange gradient) ===== -->
+<section class="themed-section text-white" style="background: linear-gradient(135deg, #fb8500 0%, #ffb703 100%);" data-aos="fade-up">
+  <div class="container-xl">
+    <h2 class="section-title text-white">Quick Links</h2>
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="quick-card bg-transparent border-light text-white" data-aos="zoom-in" data-aos-delay="80">
+          <i style="font-size: 28px">📘</i>
+          <h5>Admissions</h5>
+          <p>Join our learning community — admissions details and application info.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="quick-card bg-transparent border-light text-white" data-aos="zoom-in" data-aos-delay="120">
+          <i style="font-size: 28px">📍</i>
+          <h5>Locations</h5>
+          <p>Find our nearby branches with campus details and contacts.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="quick-card bg-transparent border-light text-white" data-aos="zoom-in" data-aos-delay="160">
+          <i style="font-size: 28px">💬</i>
+          <h5>Enquiry</h5>
+          <p>Reach out with your questions — we’ll respond with next steps.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="quick-card bg-transparent border-light text-white" data-aos="zoom-in" data-aos-delay="200">
+          <i style="font-size: 28px">🎓</i>
+          <h5>Careers</h5>
+          <p>Become part of our team — view openings and apply today.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== About & Contact (Final light theme) ===== -->
+<section class="themed-section" style="background: linear-gradient(135deg, #ffffff 0%, #f2f8fa 100%);" data-aos="fade-up">
+  <div class="container-xl text-center">
+    <h2 class="section-title">About Us & Contact</h2>
+    <p class="lead mb-5">
+      Established in 1927, our network inspires excellence across 150+ branches nationwide.
+    </p>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-4">
+        <div class="card p-4 shadow-sm">
+          <h5>🏫 Head Office</h5>
+          <p>Mumbai, Maharashtra</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card p-4 shadow-sm">
+          <h5>📞 Contact</h5>
+          <p>info@podarschool.com<br />+91-9876543210</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Admissions CTA ===== -->
+<div class="admissions-cta" style="background: linear-gradient(90deg, #00b4d8 0%, #90e0ef 100%);" data-aos="zoom-in">
+  <div>
+    <h3 class="text-white">Admissions Open — Join Our Legacy</h3>
+    <p class="text-white mb-0">Apply now for the upcoming academic year. Scholarships available.</p>
+  </div>
+  <div>
+    <a class="btn btn-cta" href="/admissions.html">Apply Now</a>
+  </div>
+</div>
+
+<!-- ===== Footer ===== -->
+<footer style="background: linear-gradient(90deg, #023047 0%, #03506f 100%);" data-aos="fade-up">
+  <div class="container">
+    <p class="mb-0 text-white">© School Website — All Rights Reserved.</p>
+  </div>
+</footer>
+
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // Init AOS
+      AOS.init({ duration: 800, once: true, easing: "ease-out-cubic" });
+
+      // Dropdown open on hover for desktop
+      (function () {
+        const mq = window.matchMedia("(min-width: 992px)");
+        function bind() {
+          document.querySelectorAll(".nav-item.dropdown").forEach((drop) => {
+            const btn = drop.querySelector('[data-bs-toggle="dropdown"]');
+            if (!btn) return;
+            const instance = bootstrap.Dropdown.getOrCreateInstance(btn);
+            drop.addEventListener("mouseenter", () => instance.show());
+            drop.addEventListener("mouseleave", () => instance.hide());
+          });
+        }
+        function unbind() {
+          document.querySelectorAll(".nav-item.dropdown").forEach((drop) => {
+            drop.onmouseenter = null;
+            drop.onmouseleave = null;
+          });
+        }
+        function toggle() {
+          if (mq.matches) bind();
+          else unbind();
+        }
+        window.addEventListener("resize", toggle);
+        toggle();
+      })();
+    </script>
+  </body>
+</html>

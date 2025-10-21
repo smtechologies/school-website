@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>School Website - Blogs</title>
+
+  <!-- ✅ Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #0b5a8a;
+      --accent: #f4b400;
+      --light: #f9fbff;
+      --dark: #111;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      color: var(--dark);
+      background: #fff;
+    }
+
+    /* ✅ Topbar */
+    .topbar {
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 0;
+    }
+    .topbar .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      gap: 10px;
+    }
+    .topbar button {
+      border: none;
+      border-radius: 24px;
+      padding: 8px 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .topbar .brochure { background: #fff; color: var(--primary); }
+    .topbar .enquire { background: var(--accent); color: #fff; }
+    .search input {
+      padding: 8px 12px;
+      border-radius: 24px;
+      border: none;
+      width: 280px;
+      max-width: 60vw;
+    }
+
+    /* ✅ Navbar */
+    .navbar {
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .navbar-brand {
+      font-weight: 800;
+      color: var(--primary) !important;
+    }
+    .nav-link {
+      font-weight: 600;
+      color: var(--primary) !important;
+      margin: 0 10px;
+    }
+    .nav-link:hover {
+      color: var(--accent) !important;
+    }
+
+    /* ✅ Hero Banner with Visible Students Background */
+    .hero-banner {
+      position: relative;
+      background: url('images/students_hero.jpg') center center / cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 180px 16px;
+    }
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(11, 90, 138, 0.45); /* 👈 lighter overlay so image is visible */
+      z-index: 1;
+    }
+    .hero-banner .content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .hero-banner h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+    }
+    .hero-banner p {
+      font-size: 1.25rem;
+      color: #f3f9ff;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* ✅ Blog Section */
+    .section {
+      padding: 80px 20px;
+    }
+    .section-title {
+      text-align: center;
+      font-weight: 800;
+      color: var(--primary);
+      font-size: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .card {
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .card-body {
+      padding: 20px;
+    }
+    .card-body h5 {
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .card-body p {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 15px;
+    }
+    .blog-meta {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 8px;
+    }
+    .btn-read {
+      background: var(--accent);
+      color: #000;
+      padding: 8px 16px;
+      border-radius: 30px;
+      border: none;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .btn-read:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* ✅ Contact Section */
+    .contact-section {
+      background: var(--light);
+      padding: 100px 20px;
+    }
+    .contact-section .section-title {
+      color: var(--primary);
+    }
+    .contact-info p {
+      color: #333;
+      font-size: 1rem;
+    }
+    iframe {
+      width: 100%;
+      border: none;
+      height: 300px;
+      border-radius: 10px;
+    }
+    .btn-accent {
+      background: var(--accent);
+      border: none;
+      color: #000;
+      font-weight: 600;
+      padding: 10px 24px;
+      border-radius: 30px;
+    }
+    .btn-accent:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* ✅ Footer */
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 40px 16px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-banner h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ✅ Topbar -->
+  <div class="topbar">
+    <div class="inner">
+      <button class="brochure">📄 Download Brochure</button>
+      <div class="search"><input type="text" placeholder="Search..." /></div>
+      <button class="enquire">📩 Enquire Now</button>
+    </div>
+  </div>
+
+  <!-- ✅ Navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">School Website</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="admissions.html">Admissions</a></li>
+          <li><a class="nav-link" href="locations.html">Locations</a></li>
+          <li><a class="nav-link" href="careers.html">Careers</a></li>
+          <li><a class="nav-link active" href="blogs.html">Blogs</a></li>
+          <li><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ✅ Hero Banner (Visible Students Image Background) -->
+  <section class="hero-banner">
+    <div class="content">
+      <h1>Inspiring Minds, Sharing Stories</h1>
+      <p>Read inspiring stories, student achievements, and educational insights from our vibrant learning community.</p>
+    </div>
+  </section>
+
+  <!-- ✅ Blog Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Our Latest Blogs</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card">
+            <img src="images/blog1.jpg" alt="Blog 1">
+            <div class="card-body">
+              <div class="blog-meta">📅 Oct 10, 2025 | 🎓 Education</div>
+              <h5>Building Creative Thinkers for the Future</h5>
+              <p>Learn how our schools nurture innovation and creativity among students to prepare them for tomorrow’s challenges.</p>
+              <a href="#" class="btn-read">Read More →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card">
+            <img src="images/blog2.jpg" alt="Blog 2">
+            <div class="card-body">
+              <div class="blog-meta">📅 Oct 5, 2025 | 🧠 Learning</div>
+              <h5>The Power of Project-Based Learning</h5>
+              <p>Explore how project-based learning helps students develop teamwork and leadership skills through real-world applications.</p>
+              <a href="#" class="btn-read">Read More →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card">
+            <img src="images/blog3.jpg" alt="Blog 3">
+            <div class="card-body">
+              <div class="blog-meta">📅 Sep 30, 2025 | 🌿 Campus Life</div>
+              <h5>Green Campuses: Educating for a Sustainable Future</h5>
+              <p>Our commitment to sustainability inspires students to make environmentally conscious choices both in and outside the classroom.</p>
+              <a href="#" class="btn-read">Read More →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ Contact Section -->
+  <section class="contact-section">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <div class="row g-4 align-items-center">
+        <div class="col-md-6">
+          <form>
+            <div class="mb-3"><input type="text" class="form-control" placeholder="Your Name" required></div>
+            <div class="mb-3"><input type="email" class="form-control" placeholder="Your Email" required></div>
+            <div class="mb-3"><textarea class="form-control" placeholder="Message" rows="4"></textarea></div>
+            <button class="btn-accent">Send Message</button>
+          </form>
+        </div>
+        <div class="col-md-6 contact-info">
+          <p><i>📍</i><strong>Head Office:</strong> Podar Education Complex, Mumbai, Maharashtra</p>
+          <p><i>📞</i><strong>Phone:</strong> +91 9876543210</p>
+          <p><i>✉️</i><strong>Email:</strong> info@podarschool.com</p>
+          <iframe src="https://www.google.com/maps?q=Podar%20Education%20Mumbai&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ Footer -->
+  <footer>
+    <p>© School Website — All Rights Reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

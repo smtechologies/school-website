@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admissions | School Website</title>
+
+  <!-- ✅ Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- ✅ AOS Animation -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- ✅ Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #0b5a8a;
+      --accent: #f4b400;
+      --light: #f9fbff;
+      --dark: #111;
+    }
+    body {
+      margin: 0;
+      font-family: "Open Sans", sans-serif;
+      background: #fff;
+      color: var(--dark);
+      font-size: 1.05rem;
+    }
+
+    /* ✅ Headings */
+    h1, h2, h3, h4 {
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* ✅ Topbar */
+    .topbar {
+      background: var(--primary);
+      color: white;
+      padding: 10px 0;
+    }
+    .topbar .inner {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 0 16px;
+    }
+    .topbar .btn {
+      border-radius: 25px;
+      font-weight: 600;
+      border: none;
+      padding: 8px 16px;
+    }
+    .topbar .btn-light { color: var(--primary); }
+    .topbar .btn-warning { background: var(--accent); color: white; }
+
+    .search input {
+      border-radius: 25px;
+      border: none;
+      padding: 8px 14px;
+      width: 300px;
+    }
+
+    /* ✅ Navbar */
+    header.mainnav {
+      background: #fff;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+    header.mainnav .inner {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 16px;
+    }
+    .brand a {
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .links a {
+      color: var(--primary);
+      margin: 0 8px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .links a:hover, .links a.active {
+      color: var(--accent);
+    }
+
+    /* ✅ Hero Section */
+    .hero {
+      position: relative;
+      background: url('images/students-poster.jpg') center/cover no-repeat;
+      height: 80vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+    }
+    .hero .content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      animation: fadeInUp 1s ease-out;
+    }
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      color: #f1f7ff;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ✅ Sections */
+    section { padding: 80px 20px; }
+    .section-title {
+      text-align: center;
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 2.4rem;
+      margin-bottom: 2rem;
+    }
+    .content-box {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+    .content-box ol, .content-box ul {
+      text-align: left;
+      margin: 20px auto;
+      max-width: 700px;
+    }
+
+    /* ✅ Enquiry Form */
+    .enquiry-form {
+      max-width: 700px;
+      margin: auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      padding: 40px;
+    }
+    .form-control, .form-select {
+      border-radius: 8px;
+      padding: 12px;
+      border: 1px solid #dce3ec;
+    }
+    .btn-submit {
+      background: var(--accent);
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      color: white;
+      font-weight: 600;
+      width: 100%;
+    }
+    .btn-submit:hover { background: #e3a900; }
+
+    /* ✅ Branch Cards */
+    .branch-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      padding: 30px;
+      text-align: center;
+      transition: 0.3s;
+    }
+    .branch-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.1);
+    }
+    .branch-card i {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    /* ✅ FAQ */
+    .accordion-button {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .accordion-button:focus {
+      box-shadow: none;
+    }
+
+    /* ✅ Footer */
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 60px;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width:768px) {
+      .hero h1 { font-size: 2rem; }
+      .hero { height: 60vh; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ✅ Topbar -->
+  <div class="topbar">
+    <div class="inner">
+      <button class="btn btn-light">📄 Download Brochure</button>
+      <div class="search"><input placeholder="Search..." /></div>
+      <button class="btn btn-warning">📩 Enquire Now</button>
+    </div>
+  </div>
+
+  <!-- ✅ Navbar -->
+  <header class="mainnav">
+    <div class="inner">
+      <div class="brand"><a href="index.html">School Website</a></div>
+      <nav class="links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="initiatives.html">Initiatives</a>
+        <a href="admissions.html" class="active">Admissions</a>
+        <a href="locations.html">Locations</a>
+        <a href="careers.html">Careers</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ✅ Hero Section -->
+  <section class="hero">
+    <div class="content">
+      <h1>Admissions 2026-27</h1>
+      <p>Join our vibrant community of learners where every child shines.</p>
+    </div>
+  </section>
+
+  <!-- ✅ Admission Process -->
+  <section>
+    <h2 class="section-title" data-aos="fade-up">Admission Process</h2>
+    <div class="content-box" data-aos="fade-up">
+      <p>Our admission process is simple, transparent, and flexible — available online or in-person at our branches.</p>
+      <h4>📘 Online Application</h4>
+      <ol>
+        <li>Complete the online application form.</li>
+        <li>Upload required documents.</li>
+        <li>Pay the first term fee online to confirm admission.</li>
+      </ol>
+      <h4>🏫 In-Person Application</h4>
+      <ol>
+        <li>Collect and fill the admission form at your nearest branch.</li>
+        <li>Submit hard copies of all documents.</li>
+        <li>Pay fees to confirm the seat.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ✅ Documents Section -->
+  <section class="bg-light">
+    <h2 class="section-title" data-aos="fade-up">Documents Required</h2>
+    <div class="content-box" data-aos="fade-up">
+      <ul class="list-unstyled">
+        <li>📄 Birth Certificate</li>
+        <li>🪪 Aadhaar Card</li>
+        <li>📚 Previous School Report Card</li>
+        <li>🏠 Address Proof</li>
+        <li>🧾 Parent ID Proof</li>
+        <li>🖼️ Passport Size Photograph</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ✅ Age Norms -->
+  <section>
+    <h2 class="section-title" data-aos="fade-up">Age Norms (as on 31st March 2026)</h2>
+    <div class="content-box" data-aos="fade-up">
+      <ul class="list-unstyled">
+        <li>Nursery – 3 years</li>
+        <li>Junior KG – 4 years</li>
+        <li>Senior KG – 5 years</li>
+        <li>Grade 1 – 6 years</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ✅ School Branches -->
+  <section class="bg-light">
+    <h2 class="section-title" data-aos="fade-up">Our School Branches</h2>
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="zoom-in"><div class="branch-card"><i>📍</i><h5>Mumbai</h5><p>Head Office and Main Campus</p></div></div>
+        <div class="col-md-4" data-aos="zoom-in"><div class="branch-card"><i>📍</i><h5>Pune</h5><p>CBSE & ICSE Divisions</p></div></div>
+        <div class="col-md-4" data-aos="zoom-in"><div class="branch-card"><i>📍</i><h5>Delhi</h5><p>New Capital Campus</p></div></div>
+        <div class="col-md-4" data-aos="zoom-in"><div class="branch-card"><i>📍</i><h5>Nagpur</h5><p>Modern Learning Center</p></div></div>
+        <div class="col-md-4" data-aos="zoom-in"><div class="branch-card"><i>📍</i><h5>Bangalore</h5><p>Tech City Branch</p></div></div>
+        <div class="col-md-4" data-aos="zoom-in"><div class="branch-card"><i>📍</i><h5>Hyderabad</h5><p>Integrated STEM Campus</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ FAQ Section -->
+  <section>
+    <h2 class="section-title" data-aos="fade-up">Frequently Asked Questions</h2>
+    <div class="container" data-aos="fade-up">
+      <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+              Do you take interviews for admission?
+            </button>
+          </h2>
+          <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">No, our admission process is fair and transparent without interviews or donations.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+              Are admissions open for all branches?
+            </button>
+          </h2>
+          <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">Yes, admissions are open for all branches subject to seat availability.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+              Can I apply online?
+            </button>
+          </h2>
+          <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">Yes, our online application process is available 24x7 for your convenience.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ Enquiry Form -->
+  <section class="bg-light">
+    <h2 class="section-title" data-aos="fade-up">Admission Enquiry Form</h2>
+    <div class="enquiry-form" data-aos="fade-up">
+      <form>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" class="form-control" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Select State</label>
+            <select class="form-select">
+              <option>Select State</option>
+              <option>Maharashtra</option>
+              <option>Gujarat</option>
+              <option>Goa</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">City</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Preferred Branch</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-12">
+            <label class="form-label">Message (optional)</label>
+            <textarea class="form-control" rows="3"></textarea>
+          </div>
+          <div class="col-12">
+            <button class="btn-submit" type="submit">Submit Enquiry</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ✅ Footer -->
+  <footer>
+    <p>© School Website — Admissions 2026-27. All Rights Reserved.</p>
+  </footer>
+
+  <!-- ✅ Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+  </script>
+</body>
+</html>
