@@ -140,6 +140,31 @@
         color: var(--yellow);
       }
 
+      /* ===== Multi-level Dropdown Styling ===== */
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu > .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  border-radius: 10px;
+  display: none;
+}
+
+.dropdown-submenu:hover > .dropdown-menu {
+  display: block;
+}
+
+.dropdown-submenu > .dropdown-item::after {
+  /* content: "›"; */
+  float: right;
+  font-weight: bold;
+  color: var(--nav-dark);
+}
+
+
       /* Hero - background image with animated gradient overlay (option 2) */
       .hero {
         position: relative;
@@ -470,48 +495,65 @@
                   <a class="dropdown-item" href="/about.html">About Us</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="/chairman-message.html"
+                  <a class="dropdown-item" href="/about.html#chairman"
                     >Chairman’s Message</a
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item" href="/podar-initiatives.html"
+                  <a class="dropdown-item" href="/polar-initiatives.html"
                     >Podar Initiatives</a
                   >
                 </li>
               </ul>
             </li>
 
-            <!-- Why Podar Dropdown -->
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="whyDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Why Podar
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="whyDropdown">
-                <li>
-                  <a class="dropdown-item" href="/curriculum.html"
-                    >The Right Curriculum</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/environment.html"
-                    >The Right Environment</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/approach.html"
-                    >The Right Approach</a
-                  >
-                </li>
-              </ul>
-            </li>
+           <!-- Why Podar Dropdown (Multi-level) -->
+<li class="nav-item dropdown">
+  <a
+    class="nav-link dropdown-toggle"
+    href="#"
+    id="whyDropdown"
+    role="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    Why Podar
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="whyDropdown">
+    <!-- The Right Curriculum (has submenu) -->
+    <li class="dropdown-submenu">
+      <a class="dropdown-item dropdown-toggle" href="#">The Right Curriculum </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Digital Lab</a></li>
+        <li><a class="dropdown-item" href="#">Innovative Lab</a></li>
+        <li><a class="dropdown-item" href="#">Innovative Academic Programs</a></li>
+        <li><a class="dropdown-item" href="#">Thematic Learning Program</a></li>
+        <li><a class="dropdown-item" href="#">Podar Innovation Center</a></li>
+      </ul>
+    </li>
+
+    <!-- The Right Faculty -->
+    <li><a class="dropdown-item" href="#">The Right Faculty</a></li>
+
+    <!-- The Right Environment (has submenu) -->
+    <li class="dropdown-submenu">
+      <a class="dropdown-item dropdown-toggle" href="#">The Right Environment </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">School Infrastructure</a></li>
+        <li><a class="dropdown-item" href="#">Our Labs</a></li>
+        <li><a class="dropdown-item" href="#">Transport Policy</a></li>
+      </ul>
+    </li>
+
+    <!-- The Right Approach -->
+    <li><a class="dropdown-item" href="#">The Right Approach</a></li>
+
+    <!-- The Right Skills -->
+    <li><a class="dropdown-item" href="#">The Right Skills</a></li>
+  </ul>
+</li>
+
+                
 
             <li class="nav-item">
               <a class="nav-link" href="/admissions.html">Admissions</a>
@@ -573,7 +615,7 @@
           </div>
           <div class="col-md-6" data-aos="fade-left">
             <img
-              src="image/cheerful-female-coworkers-office.jpg"
+              src="images/learning_big.jpg"
               alt="Learning at Podar"
               class="img-fluid rounded-4 shadow-lg"
             />
@@ -602,7 +644,7 @@
           </div>
           <div class="col-md-6" data-aos="fade-right">
             <img
-              src="image/serious-teacher-checking-assignment-two-students.jpg"
+              src="images/teachers_big.jpg"
               alt="Teachers at Podar"
               class="img-fluid rounded-4 shadow-lg"
             />
@@ -630,7 +672,7 @@
           </div>
           <div class="col-md-6" data-aos="fade-left">
             <img
-              src="image/kids-learning-more-about-chemistry-class.jpg"
+              src="images/innovation_big.jpg"
               alt="Innovation at Podar"
               class="img-fluid rounded-4 shadow-lg"
             />
@@ -646,7 +688,7 @@
     <div class="row g-4">
       <div class="col-md-4">
         <div class="card" data-aos="fade-up" data-aos-delay="80">
-          <img src="image/WhatsApp Image 2025-10-16 at 22.53.24_0f18710f.jpg" alt="Community engagement" />
+          <img src="images/campus.jpg" alt="Community engagement" />
           <div class="card-body">
             <p>
               <strong>Community engagement programs.</strong><br />
@@ -659,7 +701,7 @@
 
       <div class="col-md-4">
         <div class="card" data-aos="fade-up" data-aos-delay="140">
-          <img src="image/WhatsApp Image 2025-10-16 at 22.53.24_5c26e7f7.jpg" alt="Volunteer initiatives" />
+          <img src="images/student6.jpg" alt="Volunteer initiatives" />
           <div class="card-body">
             <p>
               <strong>Volunteer and leadership initiatives.</strong><br />
@@ -672,7 +714,7 @@
 
       <div class="col-md-4">
         <div class="card" data-aos="fade-up" data-aos-delay="200">
-          <img src="image/black-girl-taking-selfie-with-classmates.jpg" alt="Cultural events" />
+          <img src="images/student7.jpg" alt="Cultural events" />
           <div class="card-body">
             <p>
               <strong>Events that connect hearts and cultures.</strong><br />
@@ -694,7 +736,7 @@
     <div class="row g-4">
       <div class="col-md-3">
         <div class="card shadow-sm" data-aos="fade-up" data-aos-delay="80">
-          <img src="image/medium-shot-excited-kids-with-medals.jpg" alt="National awards" />
+          <img src="images/award.jpg" alt="National awards" />
           <div class="card-body">
             <p>
               <strong>National awards for academic excellence.</strong><br />
@@ -707,7 +749,7 @@
 
       <div class="col-md-3">
         <div class="card shadow-sm" data-aos="fade-up" data-aos-delay="120">
-          <img src="image/education-academy-certification-curriculum-icon.jpg" alt="Expanding network" />
+          <img src="images/campus.jpg" alt="Expanding network" />
           <div class="card-body">
             <p>
               <strong>Expanding our network nationwide.</strong><br />
@@ -720,7 +762,7 @@
 
       <div class="col-md-3">
         <div class="card shadow-sm" data-aos="fade-up" data-aos-delay="160">
-          <img src="image/side-view-boy-wearing-virtual-reality-headset-holding-books.jpg" alt="Innovation labs" />
+          <img src="images/innovation.jpg" alt="Innovation labs" />
           <div class="card-body">
             <p>
               <strong>Innovation labs across all schools.</strong><br />
@@ -733,7 +775,7 @@
 
       <div class="col-md-3">
         <div class="card shadow-sm" data-aos="fade-up" data-aos-delay="200">
-          <img src="image/real-estate-composition.jpg" alt="Research projects" />
+          <img src="images/research.jpg" alt="Research projects" />
           <div class="card-body">
             <p>
               <strong>Student research projects recognized globally.</strong><br />
@@ -755,7 +797,7 @@
     <div class="row g-4">
       <div class="col-md-4">
         <div class="card" data-aos="fade-right" data-aos-delay="80">
-          <img src="image/front-view-female-player-with-cup.jpg" alt="Science fair" />
+          <img src="images/news1.jpg" alt="Science fair" />
           <div class="card-body">
             <p>
               <strong>Student wins international science fair.</strong><br />
@@ -768,7 +810,7 @@
 
       <div class="col-md-4">
         <div class="card" data-aos="fade-up" data-aos-delay="140">
-          <img src="image/e-learning-education-networking-website-study-concept.jpg" alt="Digital hub" />
+          <img src="images/news2.jpg" alt="Digital hub" />
           <div class="card-body">
             <p>
               <strong>New digital learning hub launched.</strong><br />
@@ -781,7 +823,7 @@
 
       <div class="col-md-4">
         <div class="card" data-aos="fade-left" data-aos-delay="200">
-          <img src="image/lemon-ruan-o1IMJ9yp75M-unsplash.jpg" alt="Annual fest" />
+          <img src="images/news3.jpg" alt="Annual fest" />
           <div class="card-body">
             <p>
               <strong>Annual fest celebrates student creativity.</strong><br />
@@ -802,7 +844,7 @@
     <div class="row g-4">
       <div class="col-md-4">
         <div class="card" data-aos="flip-left" data-aos-delay="80">
-          <img src="image/silvia-iQexl3wxu1w-unsplash.jpg" alt="Green Campus Drive" />
+          <img src="images/initiative1.jpg" alt="Green Campus Drive" />
           <div class="card-body">
             <p>
               <strong>Green Campus Drive - promoting sustainability.</strong><br />
@@ -815,7 +857,7 @@
 
       <div class="col-md-4">
         <div class="card" data-aos="flip-up" data-aos-delay="140">
-          <img src="image/ilya-sonin-IsX2ZkbSk1Y-unsplash.jpg" alt="Digital platforms" />
+          <img src="images/initiative2.jpg" alt="Digital platforms" />
           <div class="card-body">
             <p>
               <strong>Digital Learning Platforms for innovation.</strong><br />
@@ -828,7 +870,7 @@
 
       <div class="col-md-4">
         <div class="card" data-aos="flip-right" data-aos-delay="200">
-          <img src="image/rineshkumar-ghirao-UdDjFekHQuk-unsplash.jpg" alt="Community outreach" />
+          <img src="images/initiative3.jpg" alt="Community outreach" />
           <div class="card-body">
             <p>
               <strong>Community Outreach Programs nationwide.</strong><br />
@@ -923,37 +965,54 @@
 
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-      // Init AOS
-      AOS.init({ duration: 800, once: true, easing: "ease-out-cubic" });
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  // Initialize AOS
+  AOS.init({
+    duration: 800,
+    once: true,
+    easing: "ease-out-cubic",
+  });
 
-      // Dropdown open on hover for desktop
-      (function () {
-        const mq = window.matchMedia("(min-width: 992px)");
-        function bind() {
-          document.querySelectorAll(".nav-item.dropdown").forEach((drop) => {
-            const btn = drop.querySelector('[data-bs-toggle="dropdown"]');
-            if (!btn) return;
-            const instance = bootstrap.Dropdown.getOrCreateInstance(btn);
-            drop.addEventListener("mouseenter", () => instance.show());
-            drop.addEventListener("mouseleave", () => instance.hide());
-          });
-        }
-        function unbind() {
-          document.querySelectorAll(".nav-item.dropdown").forEach((drop) => {
-            drop.onmouseenter = null;
-            drop.onmouseleave = null;
-          });
-        }
-        function toggle() {
-          if (mq.matches) bind();
-          else unbind();
-        }
-        window.addEventListener("resize", toggle);
-        toggle();
-      })();
-    </script>
+  // Dropdown hover for desktop
+  (function () {
+    const mq = window.matchMedia("(min-width: 992px)");
+    function bind() {
+      document.querySelectorAll(".nav-item.dropdown").forEach((drop) => {
+        const btn = drop.querySelector('[data-bs-toggle="dropdown"]');
+        if (!btn) return;
+        const instance = bootstrap.Dropdown.getOrCreateInstance(btn);
+        drop.addEventListener("mouseenter", () => instance.show());
+        drop.addEventListener("mouseleave", () => instance.hide());
+      });
+    }
+    function unbind() {
+      document.querySelectorAll(".nav-item.dropdown").forEach((drop) => {
+        drop.onmouseenter = null;
+        drop.onmouseleave = null;
+      });
+    }
+    function toggle() {
+      if (mq.matches) bind();
+      else unbind();
+    }
+    window.addEventListener("resize", toggle);
+    toggle();
+  })();
+
+  // Support for submenus (nested dropdowns)
+  document.querySelectorAll(".dropdown-submenu").forEach((submenu) => {
+    submenu.addEventListener("mouseenter", function () {
+      const childMenu = submenu.querySelector(".dropdown-menu");
+      if (childMenu) childMenu.classList.add("show");
+    });
+    submenu.addEventListener("mouseleave", function () {
+      const childMenu = submenu.querySelector(".dropdown-menu");
+      if (childMenu) childMenu.classList.remove("show");
+    });
+  });
+</script>
+
   </body>
 </html>
